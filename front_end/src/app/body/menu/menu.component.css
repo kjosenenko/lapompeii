@@ -1,0 +1,11 @@
+#coupons {
+    background-image: url("src/assets/images/ny-pizza.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 250%;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 15px;
+    text-shadow: 3px 3px #38623E;
+}

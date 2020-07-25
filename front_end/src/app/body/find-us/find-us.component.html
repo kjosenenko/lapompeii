@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="container text-center textBox">
+      <h1>Where are we?</h1>
+      <!-- <h5><button type="button" routerLink="/contact" class="btn btn-green">Subscribe</button> -->
+      <h4><a class="green-link" routerLink="/contact"><u>Subscribe</u></a> for scheduling updates and stay in the know of where you can find our delicious pizza near you.</h4>
+      <div class="container">
+        <br>
+        <div *ngFor="let event of events_list" >
+          <h3>{{ event.location }}</h3>
+          <small>From {{ startTime(event) | date: 'short' }} to {{ endTime(event) | date: 'short' }} </small>
+          <br><br>
+          <p>{{ event.description }}</p>
+          <button *ngIf="auth.loggedIn" class="btn btn-danger right-margin" (click)="open(deleteEventConfirm)">Delete</button>
+          <button *ngIf="auth.loggedIn" class="btn btn-success" (click)="open(updateEventFormModal)">Update</button>
+          <br><br>
+          <ng-template #deleteEventConfirm let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Delete {{ event.location }}?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-danger">
+                Are you sure you want to delete the event '{{ event.location }}'?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="deleteEvent(event); modal.dismiss('Cross click')">Remove</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+          </ng-template>
+          <ng-template #updateEventFormModal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update {{ event.location }}?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" [(ngModel)]="event.location" placeholder="{{ event.location }}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" class="form-control" name="description" [(ngModel)]="event.description"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="start_date">Start</label><br>
+                      <ngb-datepicker [(ngModel)]="event.start_date" #c1="ngModel" name="start_date"></ngb-datepicker>
+                          <ngb-timepicker name="start_time" [(ngModel)]="event.start_time" [hourStep]="hourStep" [minuteStep]="minuteStep" [meridian]="meridian"></ngb-timepicker>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="end_date">End</label><br>
+                      <ngb-datepicker [(ngModel)]="event.end_date" #c1="ngModel" name="end_date"></ngb-datepicker>
+                      <ngb-timepicker name="end_time" [(ngModel)]="event.end_time" [hourStep]="hourStep" [minuteStep]="minuteStep" [meridian]="meridian"></ngb-timepicker>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="updateEvent(event); modal.dismiss('Cross click')">Update</button>
+                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+      <br>
+      <button *ngIf="auth.loggedIn" class="btn btn-primary" (click)="open(newEventFormModal)">Add New Event</button>
+      <ng-template #newEventFormModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">New Event</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form >
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" name="location" [(ngModel)]="model.location" maxlength="35">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea type="text" class="form-control" name="description" [(ngModel)]="model.description" maxlength="256"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="start_date">Start</label><br>
+                <ngb-datepicker [(ngModel)]="model.start_date" #c1="ngModel" name="start_date"></ngb-datepicker>
+                <ngb-timepicker name="start_time" [(ngModel)]="model.start_time" [hourStep]="hourStep" [minuteStep]="minuteStep" [meridian]="meridian"></ngb-timepicker>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="end_date">End</label><br>
+                <ngb-datepicker [(ngModel)]="model.end_date" #c1="ngModel" name="end_date"></ngb-datepicker>
+                <ngb-timepicker name="end_time" [(ngModel)]="model.end_time" [hourStep]="hourStep" [minuteStep]="minuteStep" [meridian]="meridian"></ngb-timepicker>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success" (click)="addEvent(model); modal.dismiss('Cross click')">Add Event</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <img class="imageFit" src="assets/images/truck.jpg" alt="">
+  </div>
+</div>

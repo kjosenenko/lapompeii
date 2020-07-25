@@ -1,0 +1,9 @@
+<div id="footer" class="centerText">
+  <div>Ft. Collins, CO</div>
+  <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+  <a href="https://www.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+  <a href="https://twitter.com/" target="_blank" class="fa fa-twitter"></a><br>
+  <button type="button" routerLink="/contact" class="btn btn-red"><h5>Contact</h5></button> | 
+  <button type="button" class="btn btn-red" (click)="auth.login()" *ngIf="!auth.loggedIn"><h5>Admin</h5></button>
+  <button type="button" class="btn btn-green" (click)="auth.logout()" *ngIf="auth.loggedIn"><h5>Log Out</h5></button>
+</div>

@@ -1,0 +1,224 @@
+<div class="textBox">
+  <div id="coupons">
+    <div class="container">
+        <a class="styled-link" routerLink="/contact"><u>Subscribe</u></a> to learn more about coupons and special offers.
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div *ngFor="let category of menu_categories_list">
+      <div class="col-auto" *ngIf="category.id == 1">
+        <h1>{{ category.name }}</h1>
+        <div *ngFor="let slice of slices_list">
+          <p>{{ slice.name }} - ${{ slice. price }}</p>
+          <small *ngFor="let tagId of slice.tags">
+            | {{ TagName(tagId) }} |
+          </small>
+          <br>
+          <button *ngIf="auth.loggedIn" class="btn btn-danger right-margin" (click)="open(deleteItemConfirm)">Delete</button>
+          <button *ngIf="auth.loggedIn" class="btn btn-success" (click)="open(updateItemModal)">Update</button>
+          <ng-template #deleteItemConfirm let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Delete '{{ slice.name }}'?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-danger">
+                Are you sure you want to delete '{{ slice.name }}'?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="deleteItem(slice); modal.dismiss('Cross click')">Remove</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+          </ng-template>
+          <ng-template #updateItemModal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update {{ slice.name }}?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="location" [(ngModel)]="slice.name" placeholder="{{ slice.name }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" name="price" [(ngModel)]="slice.price" placeholder="{{ slice.price }}">
+                </div>
+                  <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea type="text" class="form-control" name="description" [(ngModel)]="slice.description" placeholder="{{ slice.description }}"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateItem(slice); modal.dismiss('Cross click')">Update</button>
+                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+                  </div>
+                </div>
+              </form>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-auto" *ngIf="category.id == 2">
+        <h1>{{ category.name }} - ${{ category. price }}</h1>
+        <p>{{ category.description }}</p>
+        <div *ngFor="let calzone of calzones_list">
+          <p>{{ calzone.name }}</p>
+          <small *ngFor="let tagId of calzone.tags">
+            | {{ TagName(tagId) }} |
+          </small>
+          <br>
+          <button *ngIf="auth.loggedIn" class="btn btn-danger right-margin" (click)="open(deleteItemConfirm)">Delete</button>
+          <button *ngIf="auth.loggedIn" class="btn btn-success" (click)="open(updateItemModal)">Update</button>
+          <ng-template #deleteItemConfirm let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Delete '{{ calzone.name }}'?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-danger">
+                Are you sure you want to delete '{{ calzone.name }}'?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="deleteItem(calzone); modal.dismiss('Cross click')">Remove</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+          </ng-template>
+          <ng-template #updateItemModal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update {{ calzone.name }}?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="location" [(ngModel)]="calzone.name" placeholder="{{ calzone.name }}">
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="text" class="form-control" name="price" [(ngModel)]="calzone.price" placeholder="{{ calzone.price }}">
+              </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" class="form-control" name="description" [(ngModel)]="calzone.description" placeholder="{{ calzone.description }}"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="updateItem(calzone); modal.dismiss('Cross click')">Update</button>
+                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-auto" *ngIf="category.id == 3">
+        <h1>{{ category.name }} - ${{ category. price }}</h1>
+        <p>{{ category.description }}</p>
+        <div *ngFor="let pie of pies_list">
+          <p>{{ pie.name }}</p>
+          <small *ngFor="let tagId of pie.tags">
+            | {{ TagName(tagId) }} |
+          </small>
+          <br>
+          <button *ngIf="auth.loggedIn" class="btn btn-danger right-margin" (click)="open(deleteItemConfirm)">Delete</button>
+          <button *ngIf="auth.loggedIn" class="btn btn-success" (click)="open(updateItemModal)">Update</button>
+          <ng-template #deleteItemConfirm let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Delete '{{ pie.name }}'?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-danger">
+                Are you sure you want to delete '{{ pie.name }}'?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="deleteItem(pie); modal.dismiss('Cross click')">Remove</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+          </ng-template>
+          <ng-template #updateItemModal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update {{ pie.name }}?</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="location" [(ngModel)]="pie.name" placeholder="{{ pie.name }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" name="price" [(ngModel)]="pie.price" placeholder="{{ pie.price }}">
+                </div>
+                  <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea type="text" class="form-control" name="description" [(ngModel)]="pie.description" placeholder="{{ pie.description }}"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateItem(pie); modal.dismiss('Cross click')">Update</button>
+                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+                  </div>
+                </div>
+              </form>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <button *ngIf="auth.loggedIn" class="btn btn-primary" (click)="open(newItemModal)">Add New Item</button>
+  <ng-template #newItemModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Menu Item</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="new_item.name" maxlength="35">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" name="price" [(ngModel)]="new_item.price" maxlength="35">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" name="category" [(ngModel)]="new_item.category">
+            <option></option>
+            <option *ngFor="let category of menu_categories_list">{{ category.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" name="description" [(ngModel)]="new_item.description" maxlength="256"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <select multiple class="form-control" name="tags" [(ngModel)]="new_item.tags">
+            <option *ngFor="let tag of menu_tags_list">{{ tag.name }}</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" (click)="addItem(new_item); modal.dismiss('Cross click')">Add Item</button>
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancel</button>
+        </div>
+        <br>
+      </form>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,25 @@
+<nav id="navBar" class="navbar sticky-top navbar-expand-lg navbar-dark">
+  <a id="logoText" class="navbar-brand" (click)="closeNavbar()" routerLink="/"><img src="assets/images/logoText.png"></a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()"data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarTogglerDemo01">
+    <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="/menu">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="/catering">Catering</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="/find-us">Find Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="/about">About</a>
+        </li>
+        <button type="button" class="btn btn-green" (click)="auth.logout()" *ngIf="auth.loggedIn"><h5>Log Out</h5></button>
+      </ul>
+    </div>
+  </div>
+</nav>

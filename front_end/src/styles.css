@@ -1,0 +1,129 @@
+h1, h2, h3 {
+    color: #83161B;
+}
+p, li {
+    color: #38623E;
+    font-size: 110%;
+}
+small, label {
+    color: #38623E;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+a {
+    color: #38623E;
+}
+a:hover {
+    font-weight: bold !important;
+}
+ul {
+    list-style-type: none !important;
+}
+.active {
+    font-weight: bold;
+    color: #83161B !important;
+}
+.btn-link:hover {
+    text-decoration: none;
+}
+.btn-link:enabled {
+    text-decoration: none;
+}
+.red {
+    color: #83161B;
+}
+.white {
+    color: white;
+}
+.green {
+    color: #38623E;
+}
+.container-fluid {
+    margin-left: 10%;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.shadowed {
+    box-shadow: 8px 8px 17px black;
+}
+.centerText {
+    text-align: center;
+}
+.nav-link {
+    color: white !important;
+}
+.emailFont {
+    font-size: 160%;
+}
+.whiteSpace {
+    white-space: normal;
+}
+.fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+.fa:hover {
+    color: #38623E !important;
+    text-decoration: none;
+}.imageFit {
+    width: auto;
+    height: auto;
+}
+.imageAdjust {
+    width: auto;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 5px;
+    max-height: 350px;
+}
+.textBox {
+    font-family: 'IM Fell Great Primer SC', serif;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+.btn-green {
+    background-color: #38623E;
+    color: white;
+}
+.btn-red {
+    background-color: #83161B;
+    color: white;
+}
+.card-header {
+    background-color: white;
+}
+.right-margin {
+    margin-right: 10px;
+}
+.styled-link {
+    color: white; 
+    text-shadow: 3px 3px #38623E;
+}
+.styled-link:hover {
+    color: #38623E;
+    text-shadow: 3px 3px white;
+}
+.red-link {
+    color:  #83161B;
+}
+.red-link:hover {
+    color:  #38623E;
+}
+.green-link {
+    color:  #38623E;
+}
+.green-link:hover {
+    color:  #83161B;
+}

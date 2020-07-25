@@ -1,0 +1,19 @@
+#contactBG {
+    background-image: url("src/assets/images/truck.jpg");
+}
+#contactForm {
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    margin-top: 7%;
+    margin-bottom: 8%;
+    border-radius: 15px;
+    font-family: 'IM Fell Great Primer SC', serif;
+    padding: 20px;
+}
+#responseMessage {
+    font-size: 300%;
+    color: white;
+}
+.container-fluid {
+    margin-left: 0% !important;
+}

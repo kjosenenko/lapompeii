@@ -1,0 +1,16 @@
+<div class="container textBox">
+  <div *ngFor="let text of text_areas_list">
+    <div *ngIf="text.title == 'Meet KJ'">
+      <h3>{{ text.title }}</h3>
+      <div [innerHTML]='text.textArea' *ngIf="!text.editMode"></div>
+      <form *ngIf="text.editMode">
+        <textarea [froalaEditor] [(froalaModel)]="text.textArea"></textarea>
+      </form>
+      <button *ngIf='text.editMode' (click)='updateTextArea(text); toggleEdit(text)'>Save</button>
+      <button *ngIf='!text.editMode && auth.loggedIn' (click)='toggleEdit(text)'>Edit</button>
+    </div>
+  </div>
+  <div class="justify-content-center">
+    <img class="imageAdjust" src="assets/images/kj.jpg" alt="">
+  </div>
+</div>

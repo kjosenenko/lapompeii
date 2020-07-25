@@ -1,0 +1,47 @@
+<div id="contactBG" class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="container col-md-8">
+      <div id="contactForm">
+        <div class="container">
+          <form *ngIf='!success'>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="email.name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" [(ngModel)]="email.email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" class="form-control" name="phone" [(ngModel)]="email.phone">
+            </div>
+            <div class="form-group">
+              <label for="comment">Inquiry or Feedback</label>
+              <textarea class="form-control" rows="3" name="comment" [(ngModel)]="email.comment"></textarea>
+            </div>
+            <button 
+              *ngIf='email.name && email.email && email.phone && email.comment' 
+              type="button"  
+              class="btn btn-green" 
+              (click)="addEmail(email)">
+              Submit
+            </button>
+            <button 
+              *ngIf='!email.name || !email.email || !email.phone || !email.comment' 
+              type="button"  
+              class="btn btn-green disabled">
+              Submit
+            </button>
+          </form>
+          <div id="responseMessage">
+            <div *ngIf='success'>{{ success }}</div>
+            <div *ngIf='error'>{{ error }}</div>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

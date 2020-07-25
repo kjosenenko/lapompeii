@@ -1,0 +1,65 @@
+<div class="container textBox">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngFor="let text of text_areas_list" class="container textBox">
+        <div *ngIf="text.title == 'Catering'">
+          <div [innerHTML]='text.textArea' *ngIf="!text.editMode"></div>
+          <form *ngIf="text.editMode">
+            <textarea [froalaEditor] [(froalaModel)]="text.textArea"></textarea>
+          </form>
+          <button *ngIf='text.editMode' (click)='updateTextArea(text); toggleEdit(text)'>Save</button>
+          <button *ngIf='!text.editMode && auth.loggedIn' (click)='toggleEdit(text)'>Edit</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="justify-content-center">
+        <img class="imageAdjust" src="assets/images/pepperoni-pizza.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  <br>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel id="custom-panel-1">
+      <ng-template ngbPanelHeader let-opened="opened">
+        <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-center pl-0"><h1 class="whiteSpace">Traditional Catering</h1></button>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div *ngFor="let text of text_areas_list" class="container textBox">
+          <div *ngIf="text.title == 'Traditional Catering'">
+            <div [innerHTML]='text.textArea' *ngIf="!text.editMode"></div>
+            <form *ngIf="text.editMode">
+              <textarea [froalaEditor] [(froalaModel)]="text.textArea"></textarea>
+            </form>
+            <button *ngIf='text.editMode' (click)='updateTextArea(text); toggleEdit(text)'>Save</button>
+            <button *ngIf='!text.editMode && auth.loggedIn' (click)='toggleEdit(text)'>Edit</button>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="custom-panel-2">
+      <ng-template ngbPanelHeader let-opened="opened">
+        <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-center pl-0"><h1 class="whiteSpace">Food Truck On Site</h1></button>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div *ngFor="let text of text_areas_list" class="container textBox">
+          <div *ngIf="text.title == 'Food Truck On Site'">
+            <div [innerHTML]='text.textArea' *ngIf="!text.editMode"></div>
+            <form *ngIf="text.editMode">
+              <textarea [froalaEditor] [(froalaModel)]="text.textArea"></textarea>
+            </form>
+            <button *ngIf='text.editMode' (click)='updateTextArea(text); toggleEdit(text)'>Save</button>
+            <button *ngIf='!text.editMode && auth.loggedIn' (click)='toggleEdit(text)'>Edit</button>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <br>
+  <h1>Book Now</h1>
+  <h4>Our schedule fills up fast. <a class="green-link" routerLink="/contact"><u> Contact Us</u></a> for scheduling availability and pricing quotes for your next event.</h4>
+</div>

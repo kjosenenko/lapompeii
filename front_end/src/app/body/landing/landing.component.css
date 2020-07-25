@@ -1,0 +1,25 @@
+#introBox {
+    background-image: url("src/assets/images/ny-pizza.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'IM Fell Great Primer SC', serif;
+    color: white;
+    font-size: 350%;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 15px;
+    text-shadow: 3px 3px #38623E;
+}
+#truck {
+    background-image: url("src/assets/images/pepperoni-pizza.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'IM Fell Great Primer SC', serif;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: white;
+    font-size: 350%;
+    text-shadow: 2px 2px #38623E;
+    margin-bottom: 0px;
+}
